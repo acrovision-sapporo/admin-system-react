@@ -14,5 +14,17 @@ module.exports = {
                 throw new Error(err);
             }
         },
+        async getUser(_, { userId} ) {
+            try {
+                const user = await User.findById(userId);
+                if (user) {
+                    return user;
+                } else {
+                    throw new Error('ユーザーが見つかりません！')
+                }
+            } catch (err) {
+                throw new Error(err);
+            }
+        }
     }
 }
